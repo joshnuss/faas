@@ -2,7 +2,6 @@ defmodule FaasWeb.Function do
   use Ecto.Schema
   import Ecto.Changeset
 
-
   schema "functions" do
     field :code, :string
     field :name, :string
