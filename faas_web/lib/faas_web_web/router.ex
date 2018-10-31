@@ -7,5 +7,7 @@ defmodule FaasWebWeb.Router do
 
   scope "/", FaasWebWeb do
     pipe_through :api
+
+    resources "/$", FunctionController
   end
 end
