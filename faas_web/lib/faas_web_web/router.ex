@@ -5,7 +5,7 @@ defmodule FaasWebWeb.Router do
     plug :accepts, ["json"]
   end
 
-  scope "/api", FaasWebWeb do
+  scope "/", FaasWebWeb do
     pipe_through :api
   end
 end
