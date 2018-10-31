@@ -10,7 +10,9 @@ defmodule FaasWebWeb.Endpoint do
   # You should set gzip to true if you are running phx.digest
   # when deploying your static files in production.
   plug Plug.Static,
-    at: "/", from: :faas_web, gzip: false,
+    at: "/",
+    from: :faas_web,
+    gzip: false,
     only: ~w(css fonts images js favicon.ico robots.txt)
 
   # Code reloading can be explicitly enabled under the
@@ -36,7 +38,7 @@ defmodule FaasWebWeb.Endpoint do
   plug Plug.Session,
     store: :cookie,
     key: "_faas_web_key",
-    signing_salt: "MGaRnuxr"
+    signing_salt: "QWYubn1Y"
 
   plug FaasWebWeb.Router
 end

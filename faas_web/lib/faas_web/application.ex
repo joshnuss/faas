@@ -11,7 +11,7 @@ defmodule FaasWeb.Application do
       # Start the Ecto repository
       FaasWeb.Repo,
       # Start the endpoint when the application starts
-      FaasWebWeb.Endpoint,
+      FaasWebWeb.Endpoint
       # Starts a worker by calling: FaasWeb.Worker.start_link(arg)
       # {FaasWeb.Worker, arg},
     ]
