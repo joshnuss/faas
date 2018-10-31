@@ -24,6 +24,7 @@ defmodule FaasWebWeb do
       import Plug.Conn
       import FaasWebWeb.Gettext
       alias FaasWebWeb.Router.Helpers, as: Routes
+      alias FaasWeb.Repo
     end
   end
 
