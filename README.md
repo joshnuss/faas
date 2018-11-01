@@ -12,13 +12,13 @@ cd faas
 cd faas_web && mix deps.get && mix ecto.setup
 ```
 
-## Running Server
+## Running the server
 
 ```bash
 cd faas_web && mix phx.server
 ```
 
-## Running Multiple Workers
+## Running multiple workers
 
 ```bash
 cd faas_worker && mix start &
@@ -29,7 +29,7 @@ cd faas_worker && mix start &
 
 ## Deploying functions
 
-Deploy a JS function to `name` into `"Hello ${name}!"`
+Deploy a JS function to convert `name` into `"Hello ${name}!"`
 
 ```bash
 curl -X POST localhost:4000/$ \
