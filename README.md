@@ -9,19 +9,20 @@ Elixir is used as coordinator to run Node code in sandbox.
 ```bash
 hub clone joshnuss/faas
 cd faas
-cd faas_web && mix deps.get && mix ecto.setup
+(cd core && mix ecto.create && mix ecto.migrate)
+(cd web && mix deps.get && mix compile)
 ```
 
 ## Running the server
 
 ```bash
-cd faas_web && mix phx.server
+cd web && mix phx.server
 ```
 
 ## Running multiple workers
 
 ```bash
-cd faas_worker
+cd worker
 mix start &
 mix start &
 mix start &
@@ -34,7 +35,7 @@ Deploy a JS function to convert `name` into `"Hello ${name}!"`
 
 ```bash
 curl -X POST localhost:4000/$ \
-  -H 'Content-Type: application/json'
+  -H 'Content-Type: application/json' \
   --data-binary '{"name": "helloWorld", "code": "module.exports = (name) => `Hello ${name}!`"}'
 
 ```
