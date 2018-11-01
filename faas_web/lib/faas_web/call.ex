@@ -2,11 +2,10 @@ defmodule FaasWeb.Call do
   use Ecto.Schema
   import Ecto.Changeset
 
-
   schema "calls" do
+    belongs_to :function, FaasWeb.Function
     field :params, {:array, :string}
     field :result, :string
-    field :function_id, :id
 
     timestamps()
   end
