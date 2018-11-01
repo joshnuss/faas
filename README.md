@@ -13,13 +13,15 @@ cd faas
 (cd web && mix deps.get && mix compile)
 ```
 
-## Running the server
+## Running in development
+
+### Starting the web server
 
 ```bash
 cd web && mix phx.server
 ```
 
-## Running multiple workers
+### Starting cluster of workers
 
 ```bash
 cd worker
@@ -29,7 +31,9 @@ mix start &
 mix start &
 ```
 
-## Deploying functions
+## Usage
+
+### Deploying functions
 
 Deploy a JS function to convert `name` into `"Hello ${name}!"`
 
@@ -40,13 +44,13 @@ curl -X POST localhost:4000/$ \
 
 ```
 
-## List all functions
+### Listing all functions
 
 ```bash
 curl localhost:4000/$
 ```
 
-## Calling functions
+### Calling functions
 
 Call the `helloWorld` function with `params: ["Josh"]`.
 
