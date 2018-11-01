@@ -8,5 +8,7 @@ defmodule FaasWeb.Repo.Migrations.CreateFunctions do
 
       timestamps()
     end
+
+    create unique_index(:functions, :name)
   end
 end

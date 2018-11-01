@@ -14,5 +14,6 @@ defmodule FaasWeb.Function do
     function
     |> cast(attrs, [:name, :code])
     |> validate_required([:name, :code])
+    |> unique_constraint(:name)
   end
 end
