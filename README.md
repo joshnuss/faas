@@ -27,7 +27,9 @@ cd faas_worker && mix start &
 cd faas_worker && mix start &
 ```
 
-## Deploying code
+## Deploying functions
+
+Deploy a JS function to `name` into `"Hello ${name}!"`
 
 ```bash
 curl -X POST localhost:4000/$ \
@@ -42,7 +44,9 @@ curl -X POST localhost:4000/$ \
 curl localhost:4000/$
 ```
 
-## Calling code
+## Calling functions
+
+Call the `helloWorld` function with `params: ["Josh"]`.
 
 ```bash
 curl -X POST localhost:4000/helloWorld \
