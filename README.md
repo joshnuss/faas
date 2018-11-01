@@ -21,7 +21,7 @@ cd faas
 cd web && mix phx.server
 ```
 
-### Starting cluster of workers
+### Starting a cluster of workers
 
 ```bash
 cd worker
@@ -33,7 +33,7 @@ mix start &
 
 ## Usage
 
-### Deploying functions
+### Deploying a function
 
 Deploy a JS function to convert `name` into `"Hello ${name}!"`
 
@@ -50,7 +50,7 @@ curl -X POST localhost:4000/$ \
 curl localhost:4000/$
 ```
 
-### Calling functions
+### Calling a function
 
 Call the `helloWorld` function with `params: ["Josh"]`.
 
