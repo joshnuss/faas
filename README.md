@@ -2,7 +2,7 @@
 
 This is a very naive implementation of a multi node faas, just for learnings sake :)
 
-Elixir is used as coordinator to run Node code in sandbox.
+Elixir is used as coordinator to run JavaScript code.
 
 ## Setup
 
