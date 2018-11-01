@@ -9,5 +9,10 @@ defmodule FaasWebWeb.Router do
     pipe_through :api
 
     resources "/$", FunctionController
+
+    scope "/:name" do
+      post "/", CallController, :create
+      get "/:id", CallController, :show
+    end
   end
 end
