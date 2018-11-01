@@ -21,10 +21,11 @@ cd faas_web && mix phx.server
 ## Running multiple workers
 
 ```bash
-cd faas_worker && mix start &
-cd faas_worker && mix start &
-cd faas_worker && mix start &
-cd faas_worker && mix start &
+cd faas_worker
+mix start &
+mix start &
+mix start &
+mix start &
 ```
 
 ## Deploying functions
