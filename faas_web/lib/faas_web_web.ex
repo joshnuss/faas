@@ -25,6 +25,7 @@ defmodule FaasWebWeb do
       import FaasWebWeb.Gettext
       alias FaasWebWeb.Router.Helpers, as: Routes
       alias FaasWeb.Repo
+      alias FaasWebWeb.ErrorView
     end
   end
 
