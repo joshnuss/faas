@@ -14,6 +14,6 @@ defmodule FaasWeb.Call do
   def changeset(call, attrs) do
     call
     |> cast(attrs, [:params, :result])
-    |> validate_required([:params, :result])
+    |> validate_required([:params])
   end
 end
