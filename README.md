@@ -1,12 +1,12 @@
 # FAAS - Function as a service
 
-A very naive implementation of a multi node faas, just for learnings sake :)
+This is a very naive implementation of a multi node faas, just for learnings sake :)
 
-Elixir is used as coordinator, Node.js is used to run code in sandbox.
+Elixir is used as coordinator to run Node code in sandbox.
 
 ## Setup
 
-```
+```bash
 hub clone joshnuss/faas
 cd faas
 cd faas_web && mix deps.get && mix ecto.setup
@@ -14,13 +14,13 @@ cd faas_web && mix deps.get && mix ecto.setup
 
 ## Running Server
 
-```
+```bash
 cd faas_web && mix phx.server
 ```
 
 ## Running Multiple Workers
 
-```
+```bash
 cd faas_worker && mix start &
 cd faas_worker && mix start &
 cd faas_worker && mix start &
@@ -29,7 +29,7 @@ cd faas_worker && mix start &
 
 ## Deploying code
 
-```
+```bash
 curl -X POST localhost:4000/$ \
   -H 'Content-Type: application/json'
   --data-binary '{"name": "helloWorld", "code": "module.exports = (name) => `Hello ${name}!`"}'
@@ -38,14 +38,16 @@ curl -X POST localhost:4000/$ \
 
 ## List all functions
 
-```
+```bash
 curl localhost:4000/$
 ```
 
 ## Calling code
 
-```
-curl -X POST localhost:4000/helloWorld -H "Content-Type: application/json" --data-binary '{"params": ["Josh"]}'
+```bash
+curl -X POST localhost:4000/helloWorld \
+  -H "Content-Type: application/json" \
+  --data-binary '{"params": ["Josh"]}'
 ```
 
 # License
