@@ -22,6 +22,7 @@ defmodule FaasWebWeb.FunctionView do
       id: function.id,
       name: function.name,
       code: function.code,
+      path: "/$/#{function.name}",
       inserted_at: function.inserted_at,
       updated_at: function.updated_at
     }
