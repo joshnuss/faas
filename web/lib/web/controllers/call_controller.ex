@@ -1,6 +1,6 @@
 defmodule Faas.Web.CallController do
   use Faas.Web, :controller
-  alias Faas.Core.{Function, Call}
+  alias Faas.Core.{Runtime, Function, Call}
 
   def create(conn, params = %{"name" => name}) do
     case Repo.get_by(Function, name: name) do
@@ -18,6 +18,7 @@ defmodule Faas.Web.CallController do
         changeset = Call.changeset(%Call{}, attrs)
 
         {:ok, call} = Repo.insert(changeset)
+        {:ok, call} = Runtime.execute(call)
 
         conn
         |> put_status(:created)
