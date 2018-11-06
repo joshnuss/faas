@@ -6,6 +6,9 @@ defmodule Faas.Core.Repo.Migrations.CreateCalls do
       add :params, {:array, :string}
       add :result, :text
       add :function_id, references(:functions, on_delete: :nothing)
+      add :start_at, :naive_datetime
+      add :end_at, :naive_datetime
+      add :duration, :integer
 
       timestamps()
     end

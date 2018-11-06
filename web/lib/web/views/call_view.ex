@@ -7,6 +7,8 @@ defmodule Faas.Web.CallView do
       url: "/#{call.id}",
       params: call.params,
       result: call.result,
+      start_at: call.start_at,
+      end_at: call.end_at,
       inserted_at: call.inserted_at,
       updated_at: call.updated_at
     }

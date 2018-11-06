@@ -6,6 +6,9 @@ defmodule Faas.Core.Call do
     belongs_to :function, Faas.Core.Function
     field :params, {:array, :string}
     field :result, :string
+    field :start_at, :naive_datetime
+    field :end_at, :naive_datetime
+    field :duration, :integer
 
     timestamps()
   end
