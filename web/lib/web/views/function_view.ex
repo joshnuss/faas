@@ -22,6 +22,7 @@ defmodule Faas.Web.FunctionView do
       id: function.id,
       name: function.name,
       code: function.code,
+      timeout: function.timeout,
       path: Routes.function_path(Endpoint, :show, function.name),
       inserted_at: function.inserted_at,
       updated_at: function.updated_at

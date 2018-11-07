@@ -5,6 +5,7 @@ defmodule Faas.Core.Function do
   schema "functions" do
     field :code, :string
     field :name, :string
+    field :timeout, :integer, default: 5000
 
     timestamps()
   end
@@ -12,7 +13,7 @@ defmodule Faas.Core.Function do
   @doc false
   def changeset(function, attrs) do
     function
-    |> cast(attrs, [:name, :code])
+    |> cast(attrs, [:name, :code, :timeout])
     |> validate_required([:name, :code])
     |> unique_constraint(:name)
   end

@@ -3,8 +3,9 @@ defmodule Faas.Core.Repo.Migrations.CreateFunctions do
 
   def change do
     create table(:functions) do
-      add :name, :string
-      add :code, :text
+      add :name, :string, null: false
+      add :code, :text, null: false
+      add :timeout, :integer, null: false
 
       timestamps()
     end
