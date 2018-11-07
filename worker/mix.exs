@@ -23,6 +23,7 @@ defmodule Faas.Worker.MixProject do
   defp deps do
     [
       {:erlexec, "~> 1.9"},
+      {:poison, "~> 3.0"},
       {:faas_core, path: "../core"}
     ]
   end
