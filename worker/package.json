@@ -1,0 +1,9 @@
+{
+  "name": "faas_core",
+  "version": "1.0.0",
+  "license": "MIT",
+  "dependencies": {
+    "stylus": "^0.54.5",
+    "vm2": "^3.6.4"
+  }
+}

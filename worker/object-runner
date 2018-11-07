@@ -1,0 +1,59 @@
+#!/usr/bin/env node
+const { stdin } = process
+const { parse } = JSON
+const { NodeVM, VMScript } = require('vm2')
+
+const scripts = {}
+const vm = new NodeVM({console: 'redirect'})
+
+stdin.setEncoding('utf8')
+
+stdin.on('data', data => {
+  const message = parse(data)
+
+  handle(message)
+})
+
+vm.on('console.log', (...args) => {
+  output({type: 'console.log', data: args})
+})
+
+function handle(message) {
+  if (!message.type)
+    throw 'Missing message type'
+
+  switch (message.type) {
+    case 'load':
+      load(message)
+      break
+
+    case 'run':
+      run(message)
+      break
+
+    default:
+      throw `Unknown message type: ${message.type}`
+  }
+}
+
+function load({name, code}) {
+  const script = new VMScript(code, name)
+
+  scripts[name] = script
+
+  output({response: "ok"})
+}
+
+function run({name, params = []}) {
+  const script = scripts[name]
+  const func = vm.run(script)
+  const response = func(...params)
+
+  output({response: "ok", data: response})
+}
+
+function output(response) {
+  const json = JSON.stringify(response)
+
+  console.log(json)
+}
