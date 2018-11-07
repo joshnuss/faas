@@ -17,8 +17,8 @@ defmodule Faas.Core.Call do
   end
 
   @doc false
-  def enqueue(call, attrs) do
-    call
+  def enqueue(attrs) do
+    %__MODULE__{}
     |> cast(attrs, [:function_id, :params])
     |> validate_required([:function_id, :params])
     |> put_change(:status, "queued")

@@ -36,8 +36,8 @@ defmodule Faas.Core do
     }
 
     {:ok, call} =
-      %Call{}
-      |> Call.enqueue(attrs)
+      attrs
+      |> Call.enqueue()
       |> Repo.insert()
 
     {:ok, call} = Runtime.execute(call)
