@@ -1,6 +1,5 @@
 defmodule Faas.Web.CallView do
   use Faas.Web, :view
-  alias Faas.Web.Endpoint
 
   def render("show.json", call) do
     %{

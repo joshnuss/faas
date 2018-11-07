@@ -41,6 +41,7 @@ defmodule Faas.Web do
       import Faas.Web.ErrorHelpers
       import Faas.Web.Gettext
       alias Faas.Web.Router.Helpers, as: Routes
+      alias Faas.Web.Endpoint
     end
   end
 
