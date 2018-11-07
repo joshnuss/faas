@@ -14,7 +14,7 @@ defmodule Faas.Core.Call do
   end
 
   @doc false
-  def changeset(call, attrs) do
+  def enqueue(call, attrs) do
     call
     |> cast(attrs, [:function_id, :params])
     |> validate_required([:function_id, :params])

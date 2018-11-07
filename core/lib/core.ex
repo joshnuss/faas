@@ -29,7 +29,7 @@ defmodule Faas.Core do
     |> Repo.preload(:function)
   end
 
-  def create_call(function, params) do
+  def call(function, params) do
     attrs = %{
       function_id: function.id,
       params: params || []
@@ -37,7 +37,7 @@ defmodule Faas.Core do
 
     {:ok, call} =
       %Call{}
-      |> Call.changeset(attrs)
+      |> Call.enqueue(attrs)
       |> Repo.insert()
 
     {:ok, call} = Runtime.execute(call)
