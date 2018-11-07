@@ -24,7 +24,9 @@ defmodule Faas.Core do
   end
 
   def get_call(id) do
-    Repo.get(Call, id)
+    Call
+    |> Repo.get(id)
+    |> Repo.preload(:function)
   end
 
   def create_call(function, params) do
@@ -38,6 +40,8 @@ defmodule Faas.Core do
       |> Call.changeset(attrs)
       |> Repo.insert()
 
-    Runtime.execute(call)
+    {:ok, call} = Runtime.execute(call)
+
+    {:ok, get_call(call.id)}
   end
 end
