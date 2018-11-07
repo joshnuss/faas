@@ -41,7 +41,7 @@ function load({name, code}) {
 
   scripts[name] = script
 
-  output({response: "ok"})
+  output({result: "ok"})
 }
 
 function run({name, params = []}) {
@@ -49,7 +49,7 @@ function run({name, params = []}) {
   const func = vm.run(script)
   const response = func(...params)
 
-  output({response: "ok", data: response})
+  output({result: "ok", data: response})
 }
 
 function output(response) {
