@@ -9,7 +9,7 @@ defmodule Faas.Core.Call do
     field :params, {:array, :string}
     field :result, :string
     field :start_at, :naive_datetime
-    field :end_at, :naive_datetime
+    field :completed_at, :naive_datetime
     field :duration, :integer
 
     timestamps()
@@ -34,8 +34,8 @@ defmodule Faas.Core.Call do
   @doc false
   def complete(call, attrs) do
     call
-    |> cast(attrs, [:end_at, :duration, :result])
-    |> validate_required([:end_at, :duration, :result])
+    |> cast(attrs, [:completed_at, :duration, :result])
+    |> validate_required([:completed_at, :duration, :result])
     |> put_change(:status, "completed")
   end
 end

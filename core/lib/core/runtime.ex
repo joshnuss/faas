@@ -10,11 +10,11 @@ defmodule Faas.Core.Runtime do
 
     {:ok, result} = Faas.Worker.execute(function, call)
 
-    end_at = NaiveDateTime.utc_now()
+    completed_at = NaiveDateTime.utc_now()
 
     changeset = Call.complete(call, %{
-      end_at: end_at,
-      duration: NaiveDateTime.diff(end_at, start_at, :milliseconds),
+      completed_at: completed_at,
+      duration: NaiveDateTime.diff(completed_at, start_at, :milliseconds),
       result: result
     })
     call = Repo.update!(changeset)

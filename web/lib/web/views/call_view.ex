@@ -9,7 +9,7 @@ defmodule Faas.Web.CallView do
       params: call.params,
       result: call.result,
       start_at: call.start_at,
-      end_at: call.end_at,
+      completed_at: call.completed_at,
       duration: call.duration,
       inserted_at: call.inserted_at,
       updated_at: call.updated_at
