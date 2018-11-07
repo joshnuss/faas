@@ -1,24 +1,16 @@
 defmodule Faas.Web.CallController do
   use Faas.Web, :controller
-  alias Faas.Core.{Runtime, Function, Call}
+  alias Faas.Core
 
   def create(conn, params = %{"name" => name}) do
-    case Repo.get_by(Function, name: name) do
+    case Core.get_function_by(name: name) do
       nil ->
         conn
         |> put_status(:not_found)
         |> render(Faas.Web.ErrorView, "404.json")
 
       function ->
-        attrs = %{
-          function_id: function.id,
-          params: params["params"] || []
-        }
-
-        changeset = Call.changeset(%Call{}, attrs)
-
-        {:ok, call} = Repo.insert(changeset)
-        {:ok, call} = Runtime.execute(call)
+        {:ok, call} = Core.create_call(function, params["params"])
 
         conn
         |> put_status(:created)
@@ -27,7 +19,7 @@ defmodule Faas.Web.CallController do
   end
 
   def show(conn, %{"id" => id}) do
-    case Repo.get_by(Call, id: id) do
+    case Core.get_call(id) do
       nil ->
         conn
         |> put_status(:not_found)

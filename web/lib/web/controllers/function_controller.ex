@@ -1,16 +1,15 @@
 defmodule Faas.Web.FunctionController do
   use Faas.Web, :controller
-  alias Faas.Core.Function
+  alias Faas.Core
 
   def index(conn, _params) do
-    functions = Repo.all(Function)
+    functions = Core.get_all_functions()
+
     render(conn, "index.json", functions: functions)
   end
 
   def create(conn, params) do
-    changeset = Function.changeset(%Function{}, params)
-
-    case Repo.insert(changeset) do
+    case Core.create_function(params) do
       {:error, changeset} ->
         conn
         |> put_status(:bad_request)
