@@ -3,7 +3,7 @@ defmodule Faas.Worker do
 
   require Logger
 
-  @cmd './object-runner'
+  @cmd Path.expand("#{__DIR__}/../object-runner")
   @cmd_opts [:stdin, :stderr, :stdout, :monitor]
 
   def start_link(opts) do
@@ -11,7 +11,7 @@ defmodule Faas.Worker do
   end
 
   def init(:ok) do
-    {:ok, _pid, id} = :exec.run_link(@cmd, @cmd_opts)
+    {:ok, _pid, id} = :exec.run_link(to_charlist(@cmd), @cmd_opts)
 
     {:ok, id}
   end
