@@ -5,6 +5,7 @@ defmodule Faas.Web.CallView do
     %{
       id: call.id,
       url: Routes.call_url(Endpoint, :show, call.function.name, call, []),
+      status: call.status,
       params: call.params,
       result: call.result,
       start_at: call.start_at,

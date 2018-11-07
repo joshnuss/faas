@@ -4,6 +4,8 @@ defmodule Faas.Core.Call do
 
   schema "calls" do
     belongs_to :function, Faas.Core.Function
+
+    field :status, :string, default: "pending"
     field :params, {:array, :string}
     field :result, :string
     field :start_at, :naive_datetime
@@ -18,6 +20,7 @@ defmodule Faas.Core.Call do
     call
     |> cast(attrs, [:function_id, :params])
     |> validate_required([:function_id, :params])
+    |> put_change(:status, "queued")
   end
 
   @doc false
@@ -25,6 +28,7 @@ defmodule Faas.Core.Call do
     call
     |> cast(attrs, [:start_at])
     |> validate_required([:start_at])
+    |> put_change(:status, "running")
   end
 
   @doc false
@@ -32,5 +36,6 @@ defmodule Faas.Core.Call do
     call
     |> cast(attrs, [:end_at, :duration, :result])
     |> validate_required([:end_at, :duration, :result])
+    |> put_change(:status, "completed")
   end
 end

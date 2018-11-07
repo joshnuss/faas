@@ -3,6 +3,7 @@ defmodule Faas.Core.Repo.Migrations.CreateCalls do
 
   def change do
     create table(:calls) do
+      add :status, :string, null: false
       add :params, {:array, :string}
       add :result, :text
       add :function_id, references(:functions, on_delete: :nothing)

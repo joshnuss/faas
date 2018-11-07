@@ -10,7 +10,7 @@ defmodule Faas.Web.CallController do
         |> render(Faas.Web.ErrorView, "404.json")
 
       function ->
-        {:ok, call} = Core.create_call(function, params["params"])
+        {:ok, call} = Core.call(function, params["params"])
 
         conn
         |> put_status(:created)
