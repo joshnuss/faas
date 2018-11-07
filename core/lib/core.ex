@@ -7,7 +7,7 @@ defmodule Faas.Core do
   if it comes from the database, an external API or others.
   """
 
-  alias Faas.Core.{Repo, Runtime, Function, Call}
+  alias Faas.Core.{Repo, Runtime, Function, Call, Log}
 
   def get_all_functions do
     Repo.all(Function)
@@ -43,5 +43,11 @@ defmodule Faas.Core do
     {:ok, call} = Runtime.execute(call)
 
     {:ok, get_call(call.id)}
+  end
+
+  def record_log(attrs) do
+    attrs
+    |> Log.record()
+    |> Repo.insert()
   end
 end

@@ -4,6 +4,7 @@ defmodule Faas.Core.Call do
 
   schema "calls" do
     belongs_to :function, Faas.Core.Function
+    has_many :logs, Faas.Core.Log
 
     field :status, :string, default: "pending"
     field :params, {:array, :string}
