@@ -11,6 +11,7 @@ hub clone joshnuss/faas
 cd faas
 (cd core && mix ecto.create && mix ecto.migrate)
 (cd web && mix deps.get && mix compile)
+(cd worker && mix deps.get && mix compile && yarn)
 ```
 
 ## Running in development
