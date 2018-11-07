@@ -16,7 +16,21 @@ defmodule Faas.Core.Call do
   @doc false
   def changeset(call, attrs) do
     call
-    |> cast(attrs, [:params, :result])
-    |> validate_required([:params])
+    |> cast(attrs, [:function_id, :params])
+    |> validate_required([:function_id, :params])
+  end
+
+  @doc false
+  def start(call, attrs) do
+    call
+    |> cast(attrs, [:start_at])
+    |> validate_required([:start_at])
+  end
+
+  @doc false
+  def complete(call, attrs) do
+    call
+    |> cast(attrs, [:end_at, :duration, :result])
+    |> validate_required([:end_at, :duration, :result])
   end
 end
