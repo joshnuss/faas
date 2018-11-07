@@ -62,6 +62,14 @@ defmodule Faas.Worker do
     GenServer.call(worker, {:run, name, params})
   end
 
+  def execute(function, call) do
+    {:ok, worker} = DynamicSupervisor.start_child(Faas.Worker.Supervisor, __MODULE__)
+
+    :ok = load(worker, function.name, function.code)
+
+    run(worker, function.name, call.params)
+  end
+
   defp send_message(id, message) do
     data = Poison.encode!(message)
     :exec.send(id, data)
