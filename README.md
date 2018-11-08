@@ -1,4 +1,4 @@
-# FAAS - Function as a service
+# FaaS - Function as a service
 
 This is a very naive implementation of a multi node faas, just for learnings sake :)
 
