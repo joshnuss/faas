@@ -2,7 +2,7 @@
 
 This is a very naive implementation of a multi node faas, just for learnings sake :)
 
-Elixir is used as coordinator to run JavaScript code.
+An Elixir web app is to store and coordinate the execution of JavaScript code. REST frontend, Postgres backend.
 
 ## Setup
 
