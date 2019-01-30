@@ -2,7 +2,7 @@
 
 This is a very naive implementation of a multi node faas, just for learnings sake :)
 
-An Elixir web app is to store and coordinate the execution of JavaScript code. REST frontend, Postgres backend.
+An Elixir web app is used to store and coordinate the execution of JavaScript code. It has a REST frontend, and Postgres backend.
 
 ## Setup
 
